@@ -1,0 +1,135 @@
+## 🔐 Authentication System (Django Backend + React Frontend)
+
+A full authentication system with:
+- User registration
+- Login with JWT
+- Protected profile route
+- Welcome email on register
+- React frontend for UI
+
+---
+
+## 🛠️ Backend (Django)
+
+### 📁 Folder Structure
+```
+auth_project/
+├── users/              # User model, views, serializers
+├── auth_project/       # Settings, URLs
+└── manage.py
+```
+
+---
+
+### 🔧 Setup Backend
+
+#### 1. Clone the repo:
+```bash
+git clone https://github.com/yourusername/yourrepo.git
+cd yourrepo/backend
+```
+
+#### 2. Install dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+#### 3. Apply migrations:
+```bash
+python manage.py migrate
+```
+
+#### 5. Run server:
+```bash
+python manage.py runserver
+```
+
+---
+
+### 🌐 API Endpoints
+
+| Method | Endpoint        | Description         |
+|--------|------------------|---------------------|
+| POST   | `/api/register/` | Register new user   |
+| POST   | `/api/token/`    | Get JWT token       |
+| GET    | `/api/profile/`  | View user profile   |
+
+**Example Register Request:**
+```json
+POST /api/register/
+{
+  "name": "John Doe",
+  "email": "john@example.com",
+  "password": "testpass123",
+  "username": "johndoe"
+}
+```
+
+**Example Login Response:**
+```json
+{
+  "access": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIs...",
+  "refresh": "def50200..."
+}
+```
+
+---
+
+## 💻 Frontend (React)
+
+### 📁 Folder Structure
+```
+auth-frontend/
+├── src/
+│   ├── components/     # Register, Login, Profile
+│   ├── services/       # API connection
+│   └── context/        # Auth state
+└── public/
+```
+
+---
+
+### 🔧 Setup Frontend
+
+#### 1. Go to frontend folder:
+```bash
+cd ../auth-frontend
+```
+
+#### 2. Install dependencies:
+```bash
+npm install
+```
+
+#### 4. Run app:
+```bash
+npm start
+```
+
+---
+
+### 🌐 App Features
+
+| Page       | URL            | Description           |
+|------------|----------------|------------------------|
+| Home       | `/`            | Welcome message        |
+| Register   | `/register`    | Register new user      |
+| Login      | `/login`       | Login with credentials |
+| Profile    | `/profile`     | View logged-in user info |
+
+---
+
+## 📝 Notes
+
+- **JWT Token Lifetime**: 1 hour (set in `settings.py`)
+- **Email Sending**: Uses Gmail SMTP (configure in Django settings)
+- **CORS**: Allowed `http://localhost:3000` for frontend
+
+---
+
+## 🛠️ Troubleshooting
+
+### Common Issues:
+- **CORS Error**: Make sure `CORS_ALLOWED_ORIGINS` includes `http://localhost:3000`
+- **JWT Expired**: Tokens expire after 1 hour (refresh if needed)
+
